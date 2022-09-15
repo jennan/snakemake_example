@@ -2,9 +2,16 @@ rule all:
     input:
         "result.txt"
 
+
+def select_inputs(wildcards):
+    import pandas as pd
+    files = pd.read_csv("conditions.csv")
+    return files[files.include]["filename"]
+
+
 rule combine:
     input:
-        "file_a.txt", "file_b.txt", "file_c.txt"
+        select_inputs
     output:
         "result.txt"
     shell:
