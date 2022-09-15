@@ -1,10 +1,12 @@
+import pandas as pd
+
+
 rule all:
     input:
         "result.txt"
 
 
 def select_inputs(wildcards):
-    import pandas as pd
     files = pd.read_csv("conditions.csv")
     return files[files.include]["filename"]
 
