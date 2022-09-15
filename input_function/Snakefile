@@ -1,0 +1,11 @@
+rule all:
+    input:
+        "result.txt"
+
+rule combine:
+    input:
+        "file_a.txt", "file_b.txt", "file_c.txt"
+    output:
+        "result.txt"
+    shell:
+        "cat {input} > {output}"
