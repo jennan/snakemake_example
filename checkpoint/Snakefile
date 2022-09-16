@@ -1,4 +1,4 @@
-SAMPLES = list(range(100))
+SAMPLES = list(range(10))
 
 
 rule all:
@@ -11,7 +11,7 @@ checkpoint generate:
     output:
         "inputs/file_{sample}.txt"
     shell:
-        "echo $RANDOM > {output}"
+        "echo $((1 + $RANDOM % 10)) > {output}"
 
 
 def select_inputs(wildcards):
@@ -20,7 +20,7 @@ def select_inputs(wildcards):
         filepath = checkpoints.generate.get(sample=sample).output[0]
         with filepath.open() as fd:
             value = int(fd.read())
-        if value > 32000:
+        if value > 5:
             outputs.append(str(filepath))
     return outputs
 
