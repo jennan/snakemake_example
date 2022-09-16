@@ -1,0 +1,34 @@
+SAMPLES = list(range(100))
+
+
+rule all:
+    input:
+        expand("inputs/file_{sample}.txt", sample=SAMPLES),
+        "result.txt"
+
+
+checkpoint generate:
+    output:
+        "inputs/file_{sample}.txt"
+    shell:
+        "echo $RANDOM > {output}"
+
+
+def select_inputs(wildcards):
+    outputs = []
+    for sample in SAMPLES:
+        filepath = checkpoints.generate.get(sample=sample).output[0]
+        with filepath.open() as fd:
+            value = int(fd.read())
+        if value > 32000:
+            outputs.append(str(filepath))
+    return outputs
+
+
+rule combine:
+    input:
+        select_inputs
+    output:
+        "result.txt"
+    shell:
+        "cat {input} > {output}"
