@@ -14,7 +14,7 @@ module purge && module load snakemake/7.6.2-gimkl-2020a-Python-3.9.9
 Then clone this repository:
 
 ```
-git clone TODO
+git clone https://github.com/jennan/snakemake_example.git
 ```
 
 Switch to the directory of the workflow of interest, for example `input_function`:
