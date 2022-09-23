@@ -6,7 +6,7 @@ On NeSI, run it in a Slurm job the first time, while `singularity` caches the co
 
 ```
 module purge
-module load snakemake/7.14.0-gimkl-2020a-Python-3.9.9 Singularity/3.10.0
+module load snakemake/7.6.2-gimkl-2020a-Python-3.9.9 Singularity/3.10.0
 module unload XALT
 
 export SINGULARITY_CACHEDIR=/nesi/nobackup/PROJECT_ID/singularity_cache
