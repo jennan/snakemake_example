@@ -36,3 +36,4 @@ The following examples are available:
 
 - [input_function](input_function) showcases a workflow using an [input function](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#input-functions).
 - [checkpoint](checkpoint) illustrates a workflow using [checkpoints](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#data-dependent-conditional-execution) for data-dependent workflows.
+- [docker](docker) shows how to use Docker containers, directly fetching them from a registry.
