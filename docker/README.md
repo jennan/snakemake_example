@@ -15,6 +15,6 @@ mkdir -p "$SINGULARITY_CACHEDIR"
 srun --time 0-01:00:00 --mem 20GB --cpus-per-task 2 snakemake -c 1 --use-singularity
 ```
 
-where `PROJECT_ID` is you NeSI project ID.
+where `PROJECT_ID` is your NeSI project ID.
 
 Subsequent runs can (but don't have to) be in a Slurm job.
