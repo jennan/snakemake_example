@@ -2,7 +2,7 @@ cluster:
     mkdir -p logs &&
     sbatch
         --parsable
-        --account {config[nesi_account]}
+        --account {config[account]}
         --time {resources.time_min}
         --mem {resources.mem_mb}
         --cpus-per-task {resources.cpus}

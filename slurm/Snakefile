@@ -1,0 +1,13 @@
+rule all:
+    input:
+        "fmriprep_version.txt"
+
+rule fmri_prep:
+    output:
+        "fmriprep_version.txt"
+    container:
+        "docker://nipreps/fmriprep:latest"
+    resources:
+        time_min=15
+    shell:
+        "fmriprep --version > {output}"
