@@ -22,3 +22,11 @@ module unload XALT
 
 snakemake --profile nesi --config account=PROJECT_ID
 ```
+
+*Note: If `account` is not specified, the workflow will crash.
+If your workflow has a [configuration file](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html), it can be defined there.*
+
+
+## References
+
+The status and sidecar scripts have been adapted from https://github.com/Snakemake-Profiles/slurm.
