@@ -7,8 +7,8 @@ cluster:
         --mem {resources.mem_mb}
         --cpus-per-task {resources.cpus}
         --gpus-per-node {resources.gpu}
-        --output logs/%j-{rule}.out
-        --error logs/%j-{rule}.out
+        --output logs/slurm-%j-{rule}.out
+        --error logs/slurm-%j-{rule}.out
         --job-name snakejob-{rule}
 default-resources:
     - cpus=1
