@@ -36,8 +36,6 @@ import time
 import threading
 import uuid
 
-from CookieCutter import CookieCutter
-
 
 #: Enables debug messages for slurm sidecar.
 DEBUG = bool(int(os.environ.get("SNAKEMAKE_SLURM_DEBUG", "0")))
@@ -112,10 +110,7 @@ class PollSqueueThread(threading.Thread):
 
     def _get_state_sacct(self, jobid):
         """Implement retrieving state via sacct for resuming jobs."""
-        cluster = CookieCutter.get_cluster_option()
         cmd = ["sacct", "-P", "-b", "-j", jobid, "-n"]
-        if cluster:
-            cmd.append(cluster)
         try_num = 0
         while try_num < self.max_tries:
             try_num += 1
@@ -141,11 +136,8 @@ class PollSqueueThread(threading.Thread):
 
     def _call_squeue(self, allow_failure=True):
         """Run the call to ``squeue``"""
-        cluster = CookieCutter.get_cluster_option()
         try_num = 0
         cmd = [SQUEUE_CMD, "--me", "--format=%i,%T", "--state=all"]
-        if cluster:
-            cmd.append(cluster)
         while try_num < self.max_tries:
             try_num += 1
             try:
