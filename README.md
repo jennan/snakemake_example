@@ -38,3 +38,4 @@ The following examples are available:
 - [checkpoint](checkpoint) illustrates a workflow using [checkpoints](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#data-dependent-conditional-execution) for data-dependent workflows.
 - [docker](docker) shows how to use Docker containers, directly fetching them from a registry.
 - [slurm](slurm) provides the core elements to run a workflow using Slurm on [NeSI](https://www.nesi.org.nz) and using a Docker container.
+- [restart](restart) presents a workflow with a failing rule that can be restarted.
