@@ -1,0 +1,11 @@
+rule all:
+    input:
+        "ffmpeg_version.txt"
+
+rule fmri_prep:
+    output:
+        "ffmpeg_version.txt"
+    conda:
+        "envs/ffmpeg.yaml"
+    shell:
+        "ffmpeg -version > {output}"
