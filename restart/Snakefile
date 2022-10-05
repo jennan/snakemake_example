@@ -1,0 +1,30 @@
+from pathlib import Path
+
+rule all:
+    input:
+        "success.txt"
+
+def last_number(wildcards, attempt):
+    step_files = sorted(Path.cwd().glob("step*"))
+    if len(step_files) == 0:
+        return "01"
+    last_file = step_files[-1]
+    return last_file.name.split("_")[-1]
+
+rule run:
+    output:
+        "success.txt"
+    resources:
+        start_id=last_number
+    shell:
+        """
+        touch start_{resources.start_id}
+        for i in $(seq -w {resources.start_id} 7); do
+            if [[ $((1 + $RANDOM % 10)) < 7 ]]; then
+                touch "step_$i"
+            else
+                exit 1
+            fi
+        done
+        touch {output}
+        """
