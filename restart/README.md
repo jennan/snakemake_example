@@ -2,7 +2,7 @@
 
 This example illustrates how to restart a rule which has failed.
 
-The failing rule will stop after its step 3, then the workflow will identify what was the last step and restart the computation from at 4.
+The failing rule will stop after its step 3, then the workflow will identify the last step (based on existing files) and restart the computation at step 4.
 
 Make sure to provide a maximum amount of attempts using the `-T` option:
 
