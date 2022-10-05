@@ -18,8 +18,6 @@ Then load the environment modules and run the workflow as follows:
 ```
 module purge
 module load snakemake/7.6.2-gimkl-2020a-Python-3.9.9 Singularity/3.10.0
-module unload XALT
-
 snakemake --profile nesi --config account=PROJECT_ID
 ```
 
