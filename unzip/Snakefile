@@ -1,0 +1,35 @@
+LETTERS = ["a", "b", "c"]
+
+rule all:
+    input:
+        "result.txt"
+
+rule dummy_file:
+    output:
+        temp("file_{letter}.txt")
+    shell:
+        "echo '{wildcards.letter}' > file_{wildcards.letter}.txt"
+
+rule zipfile:
+    input:
+        expand("file_{letter}.txt", letter=LETTERS)
+    output:
+        "files.zip"
+    shell:
+        "zip {output} {input}"
+
+rule unzip:
+    input:
+        "files.zip"
+    output:
+        temp(directory("archive"))
+    shell:
+        "unzip {input} -d {output}"
+
+rule combine:
+    input:
+        "archive"
+    output:
+        "result.txt"
+    shell:
+        "cat {input}/* > {output}"

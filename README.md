@@ -40,3 +40,4 @@ The following examples are available:
 - [slurm](slurm) provides the core elements to run a workflow using Slurm on [NeSI](https://www.nesi.org.nz) and using a Docker container.
 - [restart](restart) presents a workflow with a failing rule that can be restarted.
 - [conda](conda) provides a workflow using a Conda environment.
+- [unzip](unzip) presents a workflow unzipping an archive, using the content and discarding intermediate files.
