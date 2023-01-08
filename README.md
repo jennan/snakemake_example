@@ -39,7 +39,7 @@ The following examples are available:
 - [docker](docker) shows how to use Docker containers, directly fetching them from a registry.
 - [slurm](slurm) provides the core elements to run a workflow using Slurm on [NeSI](https://www.nesi.org.nz) and using a Docker container.
 - [slurm_immediate](slurm_immediate) showcases an alternative way to run a workflow using Slurm, submitting all jobs at once.
-- [slurm_sync](slurm_synnc) presents another alternative to run a workflow using Slurm, using `srun` directly.
+- [slurm_sync](slurm_sync) presents another alternative to run a workflow using Slurm, using `srun` directly.
 - [restart](restart) presents a workflow with a failing rule that can be restarted.
 - [conda](conda) provides a workflow using a Conda environment.
 - [unzip](unzip) presents a workflow unzipping an archive, using the content and discarding intermediate files.
