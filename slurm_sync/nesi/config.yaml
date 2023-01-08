@@ -1,7 +1,8 @@
 cluster-sync:
     mkdir -p logs &&
-    sbatch
-        --wait
+    srun
+        --quiet
+        --quit-on-interrupt
         --account {config[account]}
         --time {resources.time_min}
         --mem {resources.mem_mb}
