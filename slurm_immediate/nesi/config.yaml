@@ -1,0 +1,26 @@
+immediate-submit: True
+notemp: True
+cluster:
+    mkdir -p logs &&
+    sbatch
+        --parsable
+        $(nesi/parse_jobid.bash {dependencies})
+        --account {config[account]}
+        --time {resources.time_min}
+        --mem {resources.mem_mb}
+        --cpus-per-task {resources.cpus}
+        --gpus-per-node {resources.gpu}
+        --output logs/slurm-%j-{rule}.out
+        --error logs/slurm-%j-{rule}.out
+        --job-name snakejob-{rule}
+cluster-cancel: "scancel"
+default-resources:
+    - cpus=1
+    - mem_mb=512
+    - time_min=5
+    - gpu=0
+jobs: 1000
+max-jobs-per-second: 10
+local-cores: 1
+latency-wait: 20
+restart-times: 0
