@@ -1,0 +1,20 @@
+LETTERS = ["a", "b", "c"]
+
+rule all:
+    input:
+        "result.txt"
+
+rule input_file:
+    output:
+        temp("file_{letter}.txt")
+    shell:
+        "sleep 5 && echo '{wildcards.letter}' > file_{wildcards.letter}.txt"
+
+
+rule combine:
+    input:
+        expand("file_{letter}.txt", letter=LETTERS)
+    output:
+        "result.txt"
+    shell:
+        "sleep 5 && cat {input} > {output}"
