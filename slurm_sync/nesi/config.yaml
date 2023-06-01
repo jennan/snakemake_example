@@ -1,8 +1,6 @@
 cluster-sync:
     mkdir -p logs &&
-    srun
-        --quiet
-        --quit-on-interrupt
+    nesi/submit.py
         --account {config[account]}
         --time {resources.time_min}
         --mem {resources.mem_mb}
